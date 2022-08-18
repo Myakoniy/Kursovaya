@@ -5,11 +5,11 @@ public class Employee {
     private int zarplata;
     private static int id = 0;
 
-    public Employee(String fullName, int otdel, int zarplata, int id) {
+    public Employee(String fullName, int otdel, int zarplata) {
         this.fullName = fullName;
         this.otdel = otdel;
         this.zarplata = zarplata;
-        this.id = id++;
+        //this.id = id++;
     }
 
     public String getFullName() {
@@ -35,4 +35,10 @@ public class Employee {
     public void setZarplata(int zarplata) {
         this.zarplata = zarplata;
     }
+
+    public String toSring() {
+        return "Имя сотрудника: " + fullName + " номер отдела: " + otdel + " зарплата: " + zarplata;
+    }
+
+
 }

@@ -1,5 +1,7 @@
+import org.w3c.dom.ls.LSOutput;
+
 public class Main {
-    private static final Employee[] sotrudniki = new Employee [10];
+    private static final Employee[] sotrudniki = new Employee[10];
 
     public static void main(String[] args) {
 
@@ -14,16 +16,72 @@ public class Main {
         Employee sotrudnik9 = new Employee("Кормильцев Алексей Аркадьевич", 2, 28000);
         Employee sotrudnik10 = new Employee("Карташев Дмитрий Игнатьевич", 4, 31000);
 
+        sotrudniki[0] = sotrudnik1;
+        sotrudniki[1] = sotrudnik2;
+        sotrudniki[2] = sotrudnik3;
+        sotrudniki[3] = sotrudnik4;
+        sotrudniki[4] = sotrudnik5;
+        sotrudniki[5] = sotrudnik6;
+        sotrudniki[6] = sotrudnik7;
+        sotrudniki[7] = sotrudnik8;
+        sotrudniki[8] = sotrudnik9;
+        sotrudniki[9] = sotrudnik10;
 
-        System.out.println(sotrudnik1.toSring());
+        // System.out.println(sotrudnik1.toSring());
 
-    }
-
-    public static void printSotrudniki() {
-        for (i= 0, i<sotrudniki.length, i++) {
-            System.out.println(sotrudniki[i]);
+        for (int i = 0; i < sotrudniki.length; i++) {
+            System.out.println(sotrudniki[i].toSring());
         }
+        System.out.println("Общая сумма зарплат в месяц: " + summaZarplat());
+
+        System.out.println("Минимальная зарплата: " + findMinZp().toSring());
+        System.out.println("Максимальная зарплата: " + findMaxZp().toSring());
+        System.out.println("Средняя зарплата сотрудников: " + middleZp());
+
+
     }
+
+    public static int summaZarplat() {
+        int sum = 0;
+        for (Employee employee : sotrudniki) {
+            sum += employee.getZarplata();
+        }
+        return sum;
+    }
+
+    public static Employee findMinZp() {
+        Employee result = sotrudniki[0];
+        int minZp = sotrudniki[0].getZarplata();
+        for (Employee employee : sotrudniki) {
+            if (employee.getZarplata() < minZp) {
+                minZp = employee.getZarplata();
+                result = employee;
+            }
+        }
+        return result;
+    }
+
+    public static Employee findMaxZp() {
+        Employee result = sotrudniki[0];
+        int maxZp = sotrudniki[0].getZarplata();
+        for (Employee employee : sotrudniki) {
+            if (employee.getZarplata() > maxZp) {
+                maxZp = employee.getZarplata();
+                result = employee;
+            }
+        }
+        return result;
+    }
+
+//    public static int getMinZp() {
+//        return getMinZp();
+//    }
+
+    public static double middleZp() {
+        double middleZp = summaZarplat() / sotrudniki.length;
+        return middleZp;
+    }
+
 
 
 
